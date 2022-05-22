@@ -19,3 +19,54 @@ let level = 1;
 let order = [];
 let index = 0;
 let click = 0;
+
+// keypress and mouse clicks event listeners
+
+document.addEventListener("keypress", function () {
+  // update title according to current level
+  title.textContent = `Level ${level}`;
+  // add event listeners on their respective divs
+  green.addEventListener("click", greenClick);
+  red.addEventListener("click", redClick);
+  blue.addEventListener("click", blueClick);
+  yellow.addEventListener("click", yellowClick);
+  play();
+});
+
+// event listeners callback functions
+
+function greenClick() {
+  green.classList.add("pressed");
+  setTimeout(function () {
+    green.classList.remove("pressed");
+  }, 100);
+  click = 1;
+  monitorClicks();
+}
+
+function redClick() {
+  red.classList.add("pressed");
+  setTimeout(function () {
+    red.classList.remove("pressed");
+  }, 100);
+  click = 2;
+  monitorClicks();
+}
+
+function yellowClick() {
+  yellow.classList.add("pressed");
+  setTimeout(function () {
+    yellow.classList.remove("pressed");
+  }, 100);
+  click = 3;
+  monitorClicks();
+}
+
+function blueClick() {
+  blue.classList.add("pressed");
+  setTimeout(function () {
+    blue.classList.remove("pressed");
+  }, 100);
+  click = 4;
+  monitorClicks();
+}
