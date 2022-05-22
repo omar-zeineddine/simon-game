@@ -81,7 +81,7 @@ function monitorClicks() {
     setTimeout(function () {
       // change background to red when user clicks a wrong sequence
       body.classList.remove("red");
-    }, 250);
+    }, 1000);
 
     //remove event listeners and reset game state
     green.removeEventListener("click", greenClick);
@@ -100,4 +100,44 @@ function monitorClicks() {
       }, 1000);
     }
   }
+}
+
+let randomColor;
+
+function play() {
+  title.textContent = `Level ${level}`;
+  randomColor = Math.floor(Math.random() * 4) + 1;
+  order.push(randomColor);
+
+  if (randomColor == 1) {
+    green.style.opacity = 0.2;
+    greenSfx.play();
+    setTimeout(function () {
+      green.style.opacity = 1;
+    }, 300);
+  } else if (randomColor == 2) {
+    red.style.opacity = 0.2;
+    redSfx.play();
+    setTimeout(function () {
+      red.style.opacity = 1;
+    }, 300);
+  } else if (randomColor == 3) {
+    yellow.style.opacity = 0.2;
+    yellowSfx.play();
+    setTimeout(function () {
+      yellow.style.opacity = 1;
+    }, 300);
+  } else if (randomColor == 4) {
+    blue.style.opacity = 0.2;
+    blueSfx.play();
+    setTimeout(function () {
+      blue.style.opacity = 1;
+    }, 300);
+  }
+}
+
+function reset() {
+  level = 1;
+  index = 0;
+  order = [];
 }
