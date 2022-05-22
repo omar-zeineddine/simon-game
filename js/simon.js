@@ -70,3 +70,34 @@ function blueClick() {
   click = 4;
   monitorClicks();
 }
+
+// monitor user clicks
+
+function monitorClicks() {
+  if (click != order[index]) {
+    wrongSfx.play();
+    title.textContent = "Game over press any key to restart";
+    body.classList.add("red");
+    setTimeout(function () {
+      // change background to red when user clicks a wrong sequence
+      body.classList.remove("red");
+    }, 250);
+
+    //remove event listeners and reset game state
+    green.removeEventListener("click", greenClick);
+    red.removeEventListener("click", redClick);
+    blue.removeEventListener("click", blueClick);
+    yellow.removeEventListener("click", yellowClick);
+    reset();
+  } else {
+    sounds[click].play();
+    index++;
+    if (index == level) {
+      level++;
+      index = 0;
+      setTimeout(function () {
+        play();
+      }, 1000);
+    }
+  }
+}
